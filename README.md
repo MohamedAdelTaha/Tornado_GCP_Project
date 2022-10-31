@@ -15,25 +15,29 @@
 ### 2- Terraform Section:
 - This section contains three main modules:
     - Infrastrcuture Module:
-        - In which i defined:
+        - In which I defined:
             - VPC Network
             - Subnets
             - Firewall Rules
             - NAT and Router
     
     - Bastion Server Module:
-        - In which i defined:
+        - In which I defined:
             - Bastion VM
-            - Service account for that bastion vm
+            - Service account for that bastion VM
     
     - Google Kubernetes Engine (GKE) Module:
-        - In which i defined:
+        - In which I defined:
             - GKE cluster
             - Service account for that GKE cluster
-            - Node Pool for kubernetes cluster
+            - Node Pool for Kubernetes cluster
 
-### 3- Kubernets Section:
+### 3- Kubernetes Section:
 - This section contains the definition files for:
     - Python App
     - Redis
-- This definition files were used by the GKE cluster to deploy our python application.
+- The definition files are:
+    - `app-deployment.yml` that uses the python application's image to be deployed into the GKE cluster.
+    - `app-service.yml` a loadbalancer service that exposes our app.
+    - `redis-deployment.yml` that uses the redis image to be deployed into the GKE cluster as a cache database.
+    - `redis-service.yml` an internal service used to communicate with the redis deployment's pods.
