@@ -2,14 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-deployment
+  labels:
+    name: redis-deploy
+    app: gcp-app
 spec:
   replicas: 1
   selector:
     matchLabels:
+      name: redis-pod
       app: gcp-app
   template:
     metadata:
       labels:
+        name: redis-pod
         app: gcp-app
     spec:
       containers:
